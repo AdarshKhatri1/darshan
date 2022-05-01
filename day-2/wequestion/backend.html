@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>backend</title>
+    <style>
+        #main{
+            display: flex;
+            /* background-color: black; */
+            width: 300px;
+            justify-content:space-between ;
+            font-size: 30px;
+            
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div><a href="navbar.html">navbar</a></div>
+        <div><a href="backend.html">backend</a></div>
+        <div><a href="frontend.html">frontend</a></div>
+    </div>
+    <form id="myform">
+        <input type="text" id="name" placeholder="enter your name">
+        <input type="text" name="" id="img" placeholder="image url">
+        <input type="text" name="" id="logo" placeholder="company logo">
+        <input type="text" name="" id="role" placeholder="what's your role">
+        <input type="submit">
+    </form>
+</body>
+</html>
+
+<script>
+    console.log("done")
+    document.querySelector("#myform").addEventListener("submit",save);
+    var data = [];
+
+    function save(){
+        event.preventDefault();
+        var dataobj={
+            name : myform.name.value,
+         img : myform.img.value,
+         logo : myform.logo.value,
+         role : myform.role.value
+        }
+        data.push(dataobj);
+        var a = true;
+       for(var key in dataobj){
+        //    console.log(dataobj[key])
+           if(dataobj[key]==0){
+              alert(key+" "+"should not be empty");
+               a = false;
+               break;
+           }
+       }
+    //    console.log(b);
+        if(a ==true){
+            localStorage.setItem("investordata",JSON.stringify(data));
+        }
+       
+    }
+
+</script>

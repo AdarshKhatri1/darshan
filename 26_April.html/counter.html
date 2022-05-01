@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Likes and Dislike shown here</h1>
+    <button id="inc">Increase</button>
+    <button id="dec">Decrease</button>
+</body>
+</html>
+
+<script>
+    document.querySelector("#dec").addEventListener("click",decrease);
+    document.querySelector("#inc").addEventListener("click",increase);
+
+    var count =JSON.parse(localStorage.getItem("counter"))||0; 
+    console.log(count);
+
+    document.querySelector("h1").innerText=count;
+    function decrease(){
+        console.log(count)
+        count--;
+        document.querySelector("h1").innerText = count;
+        localStorage.setItem("counter",JSON.stringify(count));
+    }
+
+    function increase(){
+        console.log(count)
+        count++;
+        document.querySelector("h1").innerText = count;
+        localStorage.setItem("counter",JSON.stringify(count) )
+    }
+</script>

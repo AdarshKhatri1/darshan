@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>frontend</title>
+    <style>
+        #main{
+            display: flex;
+            background-color: black;
+            width: 300px;
+            justify-content:space-between ;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+           
+        }
+        #container{
+            width: 90%;
+            border: 2px solid rebeccapurple;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px
+            ;
+        }
+        h1,h2{
+            text-align: center;
+        }
+        #head{
+            display: flex;
+            justify-content: space-between;
+            width: 40%;
+            margin: auto;
+        }
+        #container>div{
+            border:  2px solid red;
+        }
+        #container>div>img{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="head">
+        <h1>FrontEnd</h1>
+        <button >Get data</button>
+    </div>
+    <div id="main">
+        <div><a href="backend.html">backend</a></div>
+        <div><a href="frontend.html">frontend</a></div>
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+   
+document.querySelector("button").addEventListener("click",dataget);
+
+function dataget(){
+var data = JSON.parse(localStorage.getItem("investordata"));
+// console.log(data);
+if(data == null){
+    // console.log("empty hai bhai")
+    // var p = document.createElement("p");
+    // p.innerText = "Data not available please fill some data"
+    // document.querySelector("head").append("p"); 
+    alert("Data not available please fill some data")
+}else{
+
+    data.forEach(function(elem){
+        console.log(elem);
+        var div = document.createElement("div");
+
+        var img = document.createElement("img");
+        img.setAttribute("src",elem.img);
+
+        var name = document.createElement("h2");
+        name.innerText = elem.name;
+
+        var role = document.createElement("p");
+        role.innerText = elem.role;
+
+        var logo = document.createElement("img");
+        logo.setAttribute("src",elem.logo)
+
+        div.append(img,name,role,logo);
+        document.querySelector("#container").append(div);
+    });
+
+
+    /* //another way
+    for(var i = 0; i<data.length;i++){
+var div = document.createElement("div");
+var img = document.createElement("img");
+img.setAttribute("src",data[i].img)
+var name = document.createElement("h2");
+name.innerText = data[i].name;
+var role = document.createElement("p");
+role.innerText = data[i].role;
+var logo = document.createElement("img");
+logo.setAttribute("src",data[i].logo)
+
+div.append(img,name,role,logo);
+document.querySelector("#container").append(div);
+}
+*/
+
+}
+}
+</script>

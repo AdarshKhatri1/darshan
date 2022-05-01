@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="signup_and_login_using_Ls">Sign Up</a></h1>
+
+    <form action="" id="log">
+        <input type="text" name="" id="mail" placeholder="Email">
+        <input type="text" name="" id="password" placeholder="Password">
+        <input type="submit" value="LOGIN">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",login)
+
+    function login(){
+        event.preventDefault();
+       var obj = {
+           mail:log.mail.value,
+           pass:log.password.value
+       }
+       var a = true;
+       var b = false;
+       for(var key in obj){
+            if(obj[key]==0){
+                a = false;
+                alert(key+" "+"should be filled");
+                break;
+            }
+        }
+        if(a==true){
+            var data = JSON.parse(localStorage.getItem("studentform"))
+            data.forEach(function(elem){
+                if(elem.email == obj.mail && elem.pass == obj.pass){
+                    b = true;
+                    alert("Login Successful")
+                }
+            })
+        }  
+           
+        if(a==true &&b == false){
+            alert("password didn't match")
+        }
+        
+       
+    }
+</script>
